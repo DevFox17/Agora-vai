@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <header>
+        <div class="logo">
+            <div class="glitch" data-text="MEMORIA">MEMORIA</div>
+            <div class="subtitle">Human Data Preservation System v2.147</div>
+        </div>
+        <nav>
+            <a href="{% url 'arquivos_culturais' %}" class="botao">Arquivos Culturais</a>
+            <a href="{% url 'registros_historicos' %}" class="nav-link">Registros Históricos</a>
+            <a href="{% url 'banco_emocional' %}" class="nav-link">Banco de dados Emocional</a>
+            <a href="{% url 'enviar_memoria' %}" class="nav-link">Enviar Memória</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Preservando o legado da Humanidade</h1>
+            <p class="warning">AVISO: Este é um sistema seguro para preservação de memórias humanas. Todos os dados enviados tornam-se parte do arquivo eterno.</p>
+        </section>
+
+    <footer>
+        <p>© 2147 MEMORIA - Preservando o Legado da Humanidade</p>
+        <div class="system-status">Status do Sistema: OPERACIONAL</div>
+    </footer>
+</div>
+{% endblock %}

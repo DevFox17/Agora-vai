@@ -1,0 +1,192 @@
+:root {
+    --primary-color: #00ff9d;
+    --secondary-color: #ff00c8;
+    --background-color: #0a0a0f;
+    --text-color: #ffffff;
+    --grid-color: rgba(0, 255, 157, 0.1);
+    --error-color: #ff0044;
+    --panel-color: rgba(0, 255, 157, 0.05);
+    --highlight-color: #00f7ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, var(--background-color) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+
+header {
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 20px;
+}
+
+.glitch {
+    font-size: 3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0.05em 0 0 var(--error-color),
+                 -0.05em -0.025em 0 var(--primary-color),
+                 -0.025em 0.05em 0 var(--secondary-color);
+    animation: glitch 4s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { text-shadow: 0.05em 0 0 var(--error-color), -0.05em -0.025em 0 var(--primary-color), -0.025em 0.05em 0 var(--secondary-color); }
+    14%, 15% { text-shadow: -0.05em -0.025em 0 var(--error-color), 0.025em 0.025em 0 var(--primary-color), -0.05em -0.05em 0 var(--secondary-color); }
+    49%, 50% { text-shadow: 0.025em 0.05em 0 var(--error-color), 0.05em 0 0 var(--primary-color), 0 -0.05em 0 var(--secondary-color); }
+}
+
+/* Painel de Contribuidores */
+.painel-contribuidores {
+    background: rgba(0, 20, 15, 0.5);
+    border: 1px solid var(--primary-color);
+    padding: 30px;
+    margin: 30px 0;
+}
+
+.contrib-card {
+    background-color: rgba(12, 25, 20, 0.9);
+    border: 1px solid var(--primary-color);
+    padding: 14px;
+    font-size: 1em;
+    font-family: 'Courier New', monospace;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.contrib-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.contrib-card p {
+    margin-bottom: 10px;
+}
+
+/* Formulário Enviar Memória */
+.enviar-memoria-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: rgba(0, 20, 15, 0.9);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    box-shadow: 0 0 20px var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px var(--primary-color);
+    }
+    50% {
+        box-shadow: 0 0 40px var(--highlight-color);
+    }
+}
+
+.enviar-memoria-container h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    color: var(--highlight-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.input,
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    background-color: rgba(12, 25, 20, 0.9);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 14px;
+    font-size: 1em;
+    font-family: 'Courier New', monospace;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 12px var(--highlight-color);
+    outline: none;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 14px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-decoration: none;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 15px var(--highlight-color);
+    transform: scale(1.03);
+}

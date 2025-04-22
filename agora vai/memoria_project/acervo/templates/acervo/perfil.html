@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section">
+    <h1>Seu Perfil</h1>
+    
+    <div class="profile-info">
+        <h2>{{ contribuidor.usuario.username }}</h2>
+        <p>Membro desde: {{ contribuidor.data_criacao|date:"d/m/Y" }}</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="bio">Biografia</label>
+                <textarea id="bio" name="bio" class="form-control">{{ contribuidor.bio }}</textarea>
+            </div>
+            <button type="submit" class="submit-btn">Atualizar Perfil</button>
+        </form>
+    </div>
+    
+    <div class="user-contributions">
+        <h3>Suas Contribuições ({{ total_entradas }})</h3>
+        <ul class="list">
+            {% for entrada in entradas %}
+                <li>
+                    <a href="{% url 'detalhe_entrada' entrada.id %}">{{ entrada.titulo }}</a> - 
+                    <small>{{ entrada.data_cadastro|date:"d/m/Y" }}</small>
+                    <span class="status-badge {{ entrada.aprovado|yesno:'approved,pending' }}">
+                        {{ entrada.aprovado|yesno:"Aprovado,Pendente" }}
+                    </span>
+                </li>
+            {% empty %}
+                <li>Você ainda não contribuiu com nenhuma memória.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

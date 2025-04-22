@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% for contribuidor in contribuidores %}
+    <div class="contrib-card painel-contribuidores">
+        <h3>{{ contribuidor.usuario.username }}</h3>
+        <p>{{ contribuidor.bio }}</p>
+        <p>Nível de Acesso: {{ contribuidor.nivel_acesso }}</p>
+        <p>Ativo: {{ contribuidor.ativo|yesno:"Sim,Não" }}</p>
+        <p>Entrou em: {{ contribuidor.data_criacao|date:"d/m/Y H:i" }}</p>
+    </div>
+{% empty %}
+    <p>Nenhum contribuidor encontrado.</p>
+{% endfor %}

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MEMORIA - Sistema de preservação de dados Humanos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'acervo/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="glitch" data-text="MEMORIA">MEMORIA</div>
+                <div class="subtitle">Human Data Preservation System v2.147</div>
+            </div>
+            <nav>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'perfil' %}" class="nav-link"><i class="fas fa-user"></i> {{ user.username }}</a>
+                    <a href="{% url 'logout' %}" class="nav-link"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-link"><i class="fas fa-sign-in-alt"></i> Entrar</a>
+                    <a href="{% url 'registrar' %}" class="nav-link"><i class="fas fa-user-plus"></i> Registrar</a>
+                {% endif %}
+                
+                <a href="{% url 'enviar_memoria' %}" class="nav-link"><i class="fas fa-upload"></i> Enviar Memória</a>
+                <a href="{% url 'curadoria' %}" class="nav-link"><i class="fas fa-star"></i> Curadoria</a>
+                <a href="{% url 'contribuidores' %}" class="nav-link"><i class="fas fa-users"></i> Contribuidores</a>
+            </nav>
+            
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            <p>© 2147 MEMORIA - Preservando o Legado da Humanidade</p>
+            <div class="system-status pulse">Status do Sistema: OPERACIONAL</div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" enctype="multipart/form-data" class="enviar-memoria-container">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="{{ form.titulo.id_for_label }}">Título</label>
+        {{ form.titulo }}
+    </div>
+    
+    <div class="form-group">
+        <label for="{{ form.categoria.id_for_label }}">Categoria</label>
+        {{ form.categoria }}
+    </div>
+    
+    <div class="form-group">
+        <label for="{{ form.conteudo.id_for_label }}">Conteúdo</label>
+        {{ form.conteudo }}
+    </div>
+    
+    <div class="form-group">
+        <label for="{{ form.data_estimada.id_for_label }}">Data Estimada</label>
+        {{ form.data_estimada }}
+    </div>
+    
+    <div class="form-group">
+        <label for="{{ form.imagem.id_for_label }}">Imagem (opcional)</label>
+        {{ form.imagem }}
+    </div>
+    
+    <button type="submit" class="submit-btn">Preservar Memória</button>
+</form>
+{% endblock %}

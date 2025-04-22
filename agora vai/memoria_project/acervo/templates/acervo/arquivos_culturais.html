@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section">
+    <h1>Arquivos Culturais</h1>
+    <p>Explore e adicione tradições, histórias orais e manifestações culturais.</p>
+    <div class="grid">
+        {% for memoria in memorias %}
+            <div class="card">
+                <h2>{{ memoria.titulo }}</h2>
+                <p>{{ memoria.descricao }}</p>
+                <small>{{ memoria.data_estimada }}</small>
+                <small> {{ memoria.TIPO_QUALIDADE }}</small>
+            </div>
+        {% empty %}
+            <p>Nenhum arquivo cultural registrado ainda.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

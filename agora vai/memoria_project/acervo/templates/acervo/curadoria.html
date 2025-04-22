@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="titulo">Painel de Curadoria</h1>
+
+    {% if memorias %}
+        <form method="post">
+            {% csrf_token %}
+            {% for memoria in memorias %}
+                <div class="painel-curadoria">
+                    <h2>{{ memoria.titulo }}</h2>
+                    <p><strong>Categoria:</strong> {{ memoria.categoria }}</p>
+                    <p><strong>Data Estimada:</strong> {{ memoria.data_estimada }}</p>
+                    <p>{{ memoria.conteudo|linebreaksbr }}</p>
+                    <p><em>{{ memoria.descricao }}</em></p>
+
+                    <label for="qualidade_{{ memoria.id }}">Classificar Raridade:</label>
+                    <select name="qualidade_{{ memoria.id }}" class="dropdown-raridade">
+                        <option value="">-- Selecione --</option>
+                        {% for chave, nome in memoria.TIPO_QUALIDADE %}
+                            <option value="{{ chave }}">{{ nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endfor %}
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="submit" class="submit-btn">Salvar Avaliações</button>
+            </div>
+        </form>
+    {% else %}
+        <p>Nenhuma memória aguardando curadoria.</p>
+    {% endif %}
+</div>
+{% endblock %}

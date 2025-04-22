@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section">
+    <h1>Banco de Dados Emocional</h1>
+    <p>Memórias que tocam o coração da humanidade.</p>
+    <div class="grid">
+        {% for memoria in memorias %}
+            <div class="card">
+                <h2>{{ memoria.titulo }}</h2>
+                <p>{{ memoria.conteudo }}</p>
+                <small>{{ memoria.data_estimada }}</small>
+                <small> {{ memoria.categoria }}</small>
+            </div>
+        {% empty %}
+            <p>O banco emocional ainda está vazio.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

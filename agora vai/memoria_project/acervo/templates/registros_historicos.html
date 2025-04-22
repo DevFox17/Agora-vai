@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-section">
+    <h1>Registros Históricos</h1>
+    <p>Documentos e testemunhos que marcaram a jornada da humanidade.</p>
+    <div class="grid">
+        {% for memoria in memorias %}
+            <div class="card">
+                <h2>{{ memoria.titulo }}</h2>
+                <p>{{ memoria.descricao }}</p>
+                <small>{{ memoria.data_estimada }}</small>
+            </div>
+        {% empty %}
+            <p>Nenhum registro histórico adicionado ainda.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

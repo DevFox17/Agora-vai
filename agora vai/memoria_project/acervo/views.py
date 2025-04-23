@@ -66,14 +66,12 @@ def arquivos_culturais(request):
     return render(request, 'arquivos_culturais.html', {'memorias': memorias_culturais})
 
 def contribuidores(request):
-/*************  ✨ Windsurf Command ⭐  *************/
     """
     Exibe a lista de contribuidores do banco de dados.
     
     Se um termo de busca for informado, a lista ser  filtrada por
     contribuidores cujo nome de usu rio contenha o termo.
     """
-/*******  513d14ff-d9fa-42a3-b70a-3686d296d8c7  *******/
     termo = request.GET.get('q')
     if termo:
         contribuidores = Contribuidor.objects.filter(usuario__username__icontains=termo)
